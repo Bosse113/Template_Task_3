@@ -182,7 +182,13 @@ internal class Program
         // Räkna även ut totalt lagervärde.
         // Lagervärde för en produkt:
         // product.Price * product.Stock
-
+        decimal sumProducts = 0;
+        foreach (var product in products)
+        {
+            Console.WriteLine(product);
+            sumProducts = +product.Value.Price * product.Value.Stock; //ToDo check why error
+        }
+        Console.WriteLine($"Summa:{ sumProducts}");
 
         // Fråga:
         // Varför passar Dictionary bra för ett produktregister?
