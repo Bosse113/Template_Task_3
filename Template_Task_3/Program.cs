@@ -156,10 +156,19 @@ internal class Program
         // Exempel på hur du lägger till en produkt i dictionaryn:
         // products["KAFFE"] = new Product("KAFFE", "Kaffe", 15.00m, 50);
         //
-        // TODO:
+        // 
         // Lägg till minst 10 produkter i products-dictionaryn.
         // Välj egna koder, namn, priser och lagersaldon.
-
+        products["KAFFE"] = new Product("KAFFE", "Kaffe", 15.00m, 25);
+        products["TE"] = new Product("TE", "Te", 10.00m, 45);
+        products["JUICE"] = new Product("JUICE", "Juice", 25.00m, 30);
+        products["FANTA"] = new Product("FANTA", "Fanta", 25.00m, 56);
+        products["COLA"] = new Product("COLA", "Cola", 25.00m, 24);
+        products["MJÖLK"] = new Product("MJÖLK", "Mjölk", 10.00m, 15);
+        products["BULLE"] = new Product("BULLE", "Bulle", 9.00m, 100);
+        products["BAKELSE"] = new Product("BAKELSE", "Bakelse", 35.00m, 9);
+        products["KAKA"] = new Product("KAKA", "Kaka", 5.00m, 30);
+        products["TÅRTA"] = new Product("TÅRTA", "Tårta", 25.00m, 5);
 
     }
 
