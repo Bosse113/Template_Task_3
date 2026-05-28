@@ -1,4 +1,5 @@
-﻿using Template_Task_3.DemoClasses;
+﻿using System.Xml.Linq;
+using Template_Task_3.DemoClasses;
 using Template_Task_3.Helpers;
 using Template_Task_3.StackAndHeap;
 
@@ -225,7 +226,7 @@ internal class Program
 
     static void AddProduct()
     {
-        Console.WriteLine("TODO: Implementera AddProduct.");
+        Console.WriteLine("AddProduct.");
 
         
         // Läs in produktkod.
@@ -257,13 +258,13 @@ internal class Program
         }
         // Fråga:
         // Vad är nyckeln och vad är värdet i products?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: Nyckeln är det som används vid sökning och värdet är innehållet i den 'raden' som nyckeln är kopplad till. ");
     }
 
     static void ChangeStock()
     {
-        Console.WriteLine("TODO: Implementera ChangeStock.");
-        // TODO:
+        Console.WriteLine("ChangeStock.");
+       
         // Läs in produktkod.
         // Slå upp produkten med TryGetValue.
         // Läs in nytt lagersaldo från användaren.
@@ -271,7 +272,20 @@ internal class Program
         // Ändra produktens Stock. Validera även i product
         // 
         // Logga ändringen.
-
+        Console.Write("Ange produktkod: ");
+        string inputCode = Console.ReadLine().ToUpper();
+        bool found = products.TryGetValue(inputCode, out Product value);
+        if (found)
+        {
+            Console.WriteLine($"Produkten {inputCode} har nu lagersaldo {value.Stock}.");
+            int stock = InputHelpers.ReadInt("Skriv in nytt lagersaldo:");
+            value.Stock= stock;
+            Console.WriteLine($"Nu är registerposten : {value}.");
+        }
+        else
+        {
+            Console.WriteLine($"Produkten {inputCode} finns inte i registret.");
+        }
     }
 
     static decimal GetPriceBad(string code)
