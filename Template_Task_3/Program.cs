@@ -277,10 +277,12 @@ internal class Program
         bool found = products.TryGetValue(inputCode, out Product value);
         if (found)
         {
+            int orginalStock = value.Stock;
             Console.WriteLine($"Produkten {inputCode} har nu lagersaldo {value.Stock}.");
             int stock = InputHelpers.ReadInt("Skriv in nytt lagersaldo:");
             value.Stock= stock;
             Console.WriteLine($"Nu är registerposten : {value}.");
+            logMessages.Add($"Lagersaldo för {inputCode} har ändrats från {orginalStock} till {value.Stock}.");
         }
         else
         {
