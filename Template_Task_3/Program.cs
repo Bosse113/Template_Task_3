@@ -176,7 +176,7 @@ internal class Program
     {
         Console.WriteLine("=== Produkter ===");
 
-        // TODO:
+        
         // Loopa igenom dictionaryn products.
         // Skriv ut varje produkt.
         // Räkna även ut totalt lagervärde.
@@ -186,18 +186,20 @@ internal class Program
         foreach (var product in products)
         {
             Console.WriteLine(product);
-            sumProducts = +product.Value.Price * product.Value.Stock; //ToDo check why error
+            sumProducts += product.Value.Price * product.Value.Stock; 
         }
-        Console.WriteLine($"Summa:{ sumProducts}");
+        Console.WriteLine($"Totalt lagervärde:{ sumProducts}");
 
         // Fråga:
         // Varför passar Dictionary bra för ett produktregister?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: Kopplingen Nyckel-Innehåll gör det lätt att hitta det som söks. ");
     }
 
     static void FindProduct()
     {
         Console.Write("Ange produktkod: ");
+        string inputCode = Console.ReadLine();
+        
         
 
         // TODO:
