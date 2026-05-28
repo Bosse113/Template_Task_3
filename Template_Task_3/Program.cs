@@ -198,29 +198,36 @@ internal class Program
     static void FindProduct()
     {
         Console.Write("Ange produktkod: ");
-        string inputCode = Console.ReadLine();
-        
-        
+        string inputCode = Console.ReadLine().ToUpper();
 
-        // TODO:
+       
         // Hämta produktens code
         // Gör koden till stora bokstäver med .ToUpper()
         // Slå upp produkten med TryGetValue
         // Om produkten finns, skriv ut den.
         // Om produkten saknas, skriv ett felmeddelande.
 
-        Console.WriteLine("TODO: Implementera FindProduct.");
+        bool found = products.TryGetValue(inputCode, out Product value);
+        if (found)
+        {
+            Console.WriteLine(value);
+        }
+        else
+        {
+            Console.WriteLine("Produkten finns inte i registret.");
+        }
+        // Console.WriteLine("TODO: Implementera FindProduct.");
 
         // Fråga:
         // Varför är TryGetValue bättre än att skriva products[code] direkt?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: TryGetValue söker efter produkten med hjälp av nyckeln");
     }
 
     static void AddProduct()
     {
         Console.WriteLine("TODO: Implementera AddProduct.");
-      
-        // TODO:
+
+        
         // Läs in produktkod.
         // Gör produktkoden till stora bokstäver med .ToUpper().
         // Kontrollera om koden redan finns i products — skriv felmeddelande om den gör det.
@@ -231,6 +238,23 @@ internal class Program
         // Lägg till produkten i products-dictionaryn.
         // Lägg till ett loggmeddelande i logMessages.
 
+        Console.Write("Ange produktkod: ");
+        string inputCode = Console.ReadLine().ToUpper();
+        bool found = products.TryGetValue(inputCode, out Product value);
+        if (found)
+        {
+            Console.WriteLine($"Produkten {value.Code} finns redan i registret.");
+        }
+        else
+        {
+            Console.Write("Skriv in produktens namn:");
+            string name = Console.ReadLine();
+            decimal price = InputHelpers.ReadDecimal("Skriv in produktens pris:");
+            Console.WriteLine("Skriv in lagersaldo:");
+            int stock = int.Parse(Console.ReadLine());
+            products[inputCode] = new Product(inputCode, name, price, stock);
+
+        }
         // Fråga:
         // Vad är nyckeln och vad är värdet i products?
         Console.WriteLine("Svar: TODO - skriv ditt svar här");
