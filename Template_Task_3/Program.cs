@@ -382,17 +382,28 @@ internal class Program
     static void ServeNextCustomer()
     {
         Console.WriteLine("TODO: Implementera ServeNextCustomer.");
-        
+
         // TODO:
         // Kontrollera om customerQueue är tom — skriv meddelande om den är det.
         // Om den inte är tom:
         // Använd Dequeue för att ta bort och hämta den första kunden.
         // Skriv ut vilken kund som blev betjänad.
         // Lägg till ett loggmeddelande i logMessages.
+        if (customerQueue.Count == 0)
+        {
+            Console.WriteLine("Kön är tom.");
+        }
+        else
+        {
+            Customer servedCust = customerQueue.Dequeue();
 
+            Console.WriteLine($"{servedCust.Name} blev betjänad.");
+
+            logMessages.Add($"Kund betjänad: {servedCust.Name}");
+        }
         // Fråga:
         // Varför passar Queue bättre än Stack för en kundkö?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: Queue använder FIFO medans Stack använder LIFO.");
     }
 
     static void PrintCustomerQueue()
@@ -410,8 +421,19 @@ internal class Program
         // 3. Stina (2026-05-26 10:03)
         //
         // Tips: foreach fungerar på Queue utan att ta bort elementen.
-
-        Console.WriteLine("TODO: Implementera PrintCustomerQueue.");
+        int x = 1; //räknare för platsnummer
+        if (customerQueue.Count == 0)
+        {
+            Console.WriteLine("Kön är tom.");
+        }
+        else
+        {
+            foreach (var cust in customerQueue)
+            {
+                Console.WriteLine($"{x++}. {cust.Name} {cust.AddedAt}");
+            }
+        }
+        // Console.WriteLine("PrintCustomerQueue klar");
     }
 
     #endregion
