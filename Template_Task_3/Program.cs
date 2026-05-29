@@ -357,7 +357,7 @@ internal class Program
 
     static void AddCustomerToQueue()
     {
-        Console.WriteLine("TODO: Implementera AddCustomerToQueue.");
+        //Console.WriteLine("AddCustomerToQueue.");
 
         // 
         // Läs in kundens namn (använd InputHelpers.ReadString).
@@ -381,7 +381,7 @@ internal class Program
 
     static void ServeNextCustomer()
     {
-        Console.WriteLine("TODO: Implementera ServeNextCustomer.");
+        //Console.WriteLine("Implementera ServeNextCustomer.");
 
        
         // Kontrollera om customerQueue är tom — skriv meddelande om den är det.
@@ -468,7 +468,7 @@ internal class Program
         {
             Customer currentCust = customerQueue.Peek();//Tar fram nästa kund i kön.
 
-            string productCode = InputHelpers.ReadString("Ange produktkod: ");
+            string productCode = InputHelpers.ReadString("Ange produktkod: ").ToUpper();
 
             if (products.TryGetValue(productCode, out Product product)) //Söker efter produkten
             {
@@ -510,7 +510,7 @@ internal class Program
     {
         Console.WriteLine("TODO: Implementera UndoLastSale.");
 
-        // TODO:
+        // 
         // Kontrollera om saleHistory är tom — skriv meddelande om den är det.
         // Om den inte är tom:
         // Använd Pop för att hämta och ta bort senaste försäljningen.
@@ -547,7 +547,7 @@ internal class Program
         Console.WriteLine("=== Stack-labb: vänd text ===");
         Console.WriteLine("TODO: Implementera ReverseTextLab.");
 
-        // TODO:
+        //:
         // Läs in en text från användaren.
         // Skriv ut texten bakofram använd en lämplig collektion.
 
@@ -587,12 +587,22 @@ internal class Program
         // TODO:
         // Om logMessages är tom, skriv "Inga loggmeddelanden finns."
         // Annars: loopa igenom logMessages och skriv ut varje meddelande.
-
-        Console.WriteLine("TODO: Implementera PrintLog.");
+        if (logMessages.Count <= 0)
+        {
+            Console.WriteLine("Inga loggmeddelanden finns.");
+        }
+        else
+        {
+            foreach (var message in logMessages)
+            {
+                Console.WriteLine(message);
+            }
+        }
+        //Console.WriteLine("Implementera PrintLog.");
 
         // Fråga:
         // Varför passar List bra för loggmeddelanden?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar:Loggar behöver ju bara lagra meddelanden och byggas på med tiden.  ");
     }
 
     static void ListLab()
