@@ -383,7 +383,7 @@ internal class Program
     {
         Console.WriteLine("TODO: Implementera ServeNextCustomer.");
 
-        // TODO:
+       
         // Kontrollera om customerQueue är tom — skriv meddelande om den är det.
         // Om den inte är tom:
         // Använd Dequeue för att ta bort och hämta den första kunden.
@@ -410,7 +410,7 @@ internal class Program
     {
         Console.WriteLine("=== Kundkö ===");
 
-        // TODO:
+      
         // Om customerQueue är tom, skriv att kön är tom.
         // Annars: loopa igenom customerQueue med en räknare.
         // Skriv ut platsnummer, namn och tidsstämpel för varje kund.
@@ -446,7 +446,7 @@ internal class Program
 
     static void SellProduct()
     {
-        // TODO:
+        // 
         // Kontrollera om customerQueue är tom — skriv meddelande om den är det.
         // Använd Peek för att se vilken kund som står först (utan att ta bort dem).
         // Läs in produktkod.
@@ -460,12 +460,50 @@ internal class Program
         // Extra:
         // Bestäm om kunden ska tas bort från kön efter köp eller inte.
         // Motivera ditt val i kommentar.
+        if (customerQueue.Count == 0)
+        {
+            Console.WriteLine("Kön är tom.");
+        }
+        else
+        {
+            Customer currentCust = customerQueue.Peek();//Tar fram nästa kund i kön.
 
-        Console.WriteLine("TODO: Implementera SellProduct.");
+            string productCode = InputHelpers.ReadString("Ange produktkod: ");
+
+            if (products.TryGetValue(productCode, out Product product)) //Söker efter produkten
+            {
+                if (product.Stock > 0)
+                {
+                    product.Stock--;
+
+                    Sale sale = new Sale(productCode, product.Name, product.Price, currentCust.Name);
+
+                    saleHistory.Push(sale);
+
+                    Console.WriteLine($"{currentCust.Name} köpte {product.Name}.");
+                    ServeNextCustomer();
+                    //Tar bort kunden från kön.
+                    //Detta för att nästa kund ska ligga på tur. 
+                    //Annars kommer ju kundkön växa även om kunden blivit betjänad.
+                    logMessages.Add(
+                        $"Försäljning: {currentCust.Name} köpte {product.Name} för {product.Price} kr."
+                    );
+                }
+                else
+                {
+                    Console.WriteLine("Produkten är slut i lager.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Produkten finns inte.");
+            }
+        }
+        //Console.WriteLine(" SellProduct klar.");
 
         // Fråga:
         // Varför sparar vi försäljningar i en Stack?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: För att den senaste försäljningen ska 'ligga överst'.Blir lättare at hämta den då. Se UndoLastSale.");
     }
 
     static void UndoLastSale()
@@ -479,10 +517,29 @@ internal class Program
         // Slå upp produkten i products med försäljningens ProductCode.
         // Öka produktens Stock med 1.
         // Logga vad som ångrades i logMessages.
-
+        if (saleHistory.Count == 0)
+        {
+            Console.WriteLine("Finns ingen försäljning registerad.");
+        }
+        else
+        {
+            Sale latestSale=saleHistory.Pop();
+            bool found = products.TryGetValue(latestSale.ProductCode, out Product value);
+            if (found)
+            {
+                value.Stock++;
+                logMessages.Add($"Köpet av {latestSale.ProductName} ångrades av {latestSale.CustomerName} nytt lagersaldo {value.Stock}");
+            }
+            else
+           
+            
+            {
+                Console.WriteLine("Produkten finns inte i registret.");
+            }
+        }
         // Fråga:
         // Vad betyder LIFO?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: LIFO är Last In First Out. Allt läggs på i en hög och den sist pålagda är den som är tillgänglig först.");
     }
 
     static void ReverseTextLab()
