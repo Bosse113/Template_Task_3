@@ -23,7 +23,7 @@ internal class Program
 
     static void Main(string[] args)
     {
-        //ToDo implementera 
+        //implementera 
         SeedProducts();
 
         bool running = true;
@@ -584,7 +584,7 @@ internal class Program
     {
         Console.WriteLine("=== Logg ===");
 
-        // TODO:
+        // 
         // Om logMessages är tom, skriv "Inga loggmeddelanden finns."
         // Annars: loopa igenom logMessages och skriv ut varje meddelande.
         if (logMessages.Count <= 0)
@@ -631,7 +631,7 @@ internal class Program
         shoppingList.Remove("Smör");
         PrintListInfo(shoppingList, "Efter Remove");
 
-        // TODO:
+        // 
         // Lägg till minst 4 egna varor med en loop.
         // Skriv ut hela listan.
         string[] varor = { "Hushållspapper", "Lax", "Öl", "Bacon" };
@@ -682,7 +682,7 @@ internal class Program
 
         string[] weekdays = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag"];
 
-        // TODO:
+        // 
         // Skriv ut alla veckodagar med en for-loop.
         // Tips: använd weekdays.Length för att veta hur många element det finns.
         Console.WriteLine($"{Environment.NewLine}Skriv ut dagarna med en for-loop.");
@@ -690,7 +690,7 @@ internal class Program
         {
             Console.WriteLine(weekdays[i]);
         }
-        // TODO:
+        // 
         // Skriv ut alla veckodagar med foreach.
         Console.WriteLine($"{Environment.NewLine}Skriv ut dagarna med en foreach-loop.");
         foreach (var day in weekdays)
