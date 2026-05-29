@@ -254,7 +254,7 @@ internal class Program
             Console.WriteLine("Skriv in lagersaldo:");
             int stock = int.Parse(Console.ReadLine());
             products[inputCode] = new Product(inputCode, name, price, stock);
-
+            logMessages.Add($"Produkten {inputCode} har lagts till.");
         }
         // Fråga:
         // Vad är nyckeln och vad är värdet i products?
@@ -358,17 +358,25 @@ internal class Program
     static void AddCustomerToQueue()
     {
         Console.WriteLine("TODO: Implementera AddCustomerToQueue.");
-        
-        // TODO:
+
+        // 
         // Läs in kundens namn (använd InputHelpers.ReadString).
         // Skapa ett Customer-objekt med namnet.
         // Lägg kunden i customerQueue med Enqueue.
         // Skriv ut att kunden lagts till och vilken plats i kön de har.
         // Lägg till ett loggmeddelande i logMessages.
+        string custName = InputHelpers.ReadString("Skriv in kundnamn:");
+        Customer customer = new Customer(custName);
 
+        customerQueue.Enqueue(customer);
+
+        Console.WriteLine($"{customer.Name} har lagts till i kön.");
+        Console.WriteLine($"Plats i kön: {customerQueue.Count}.");
+
+        logMessages.Add($"Kund tillagd i kön: {customer.Name}");
         // Fråga:
         // Vad betyder FIFO?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: First In First Out. Det som läggs till plockas ut i nummerordning.");
     }
 
     static void ServeNextCustomer()
