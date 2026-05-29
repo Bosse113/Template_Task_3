@@ -550,6 +550,26 @@ internal class Program
         // TODO:
         // Läs in en text från användaren.
         // Skriv ut texten bakofram använd en lämplig collektion.
+
+        //Stack är ju perfekt för detta då vi lägger första bokstaven längst ner och fyller på med resterande bokstäver.
+        //Sen när vi plockar från stacken så hämtar vi ju bokstäverna i omvänd ordning.
+        string text = InputHelpers.ReadString("Skriv en text: ");
+
+        Stack<char> letters = new Stack<char>();
+
+        foreach (char c in text)
+        {
+            letters.Push(c);//lägger bokstaven på stacken
+        }
+
+        Console.Write("Baklänges: ");
+
+        while (letters.Count > 0)
+        {
+            Console.Write(letters.Pop());//Hämtar bokstaven från stacken
+        }
+
+        Console.WriteLine();
     }
 
     #endregion
