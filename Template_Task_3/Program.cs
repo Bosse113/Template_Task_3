@@ -316,7 +316,7 @@ internal class Program
 
     static decimal GetPriceBetter(string code)
     {
-        // TODO:
+        // 
         // Skriv om GetPriceBad med en lokal Dictionary istället för if/else.
         // Samma fyra produkter och priser som i GetPriceBad ska finnas.
         // Använd TryGetValue för att slå upp priset.
@@ -325,9 +325,24 @@ internal class Program
         // Jämför sedan de två metoderna — vad händer om du behöver lägga till
         // en femte produkt? Vilken metod är enklare att utöka?
 
+        // Dictionary är ju enklare att utöka. En ny rad per tillägg. If kräver flera rader.
+        var prices = new Dictionary<string, decimal>
+    {
+        { "KAFFE", 15 },
+        { "TE", 12 },
+        { "BULLE", 18 },
+        { "MACKA", 35 }
+    };
+
+        if (prices.TryGetValue(code, out decimal price))
+        {
+            return price;
+        }
+
+        return -1;
         // Fråga:
         // Varför är Dictionary-lösningen bättre än många if/else-satser?
-        Console.WriteLine("Svar: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar: Med IF måste du lägga till ännu ett nytt villkor för varje ny produkt.Med Dictionary lägger du bara till en ny rad.");
 
         return -1;
     }
