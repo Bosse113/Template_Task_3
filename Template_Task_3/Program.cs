@@ -634,22 +634,33 @@ internal class Program
         // TODO:
         // Lägg till minst 4 egna varor med en loop.
         // Skriv ut hela listan.
+        string[] varor = { "Hushållspapper", "Lax", "Öl", "Bacon" };
 
+        for (int i = 0; i < varor.Length; i++)
+        {
+            shoppingList.Add(varor[i]);
+        }
+        Console.WriteLine("Shoppinglista:");
+        foreach (var shop in shoppingList)
+        {
+            Console.WriteLine(shop);
+        }
         // Fråga 1:
         // Vad betyder Count?
-        Console.WriteLine("Svar 1: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar 1: Count visar antalet poster i en lista");
 
         // Fråga 2:
         // Vad betyder Capacity?
-        Console.WriteLine("Svar 2: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar 2: Capacity är det antal poster listan kan innehålla innan den måste göra sig större");
 
         // Fråga 3:
         // Varför ökar inte Capacity med exakt 1 varje gång?
-        Console.WriteLine("Svar 3: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar 3: Varje gång Capacity ökas så skapas en kopia på Listan som ersätter den gamla Listan. ");
+        Console.WriteLine("Det blir lite mycket jobb om det ska göras varje gång Capacity ska ökas. Därför ökas den med 4 först för att senare ökas med mer.");
 
         // Fråga 4:
         // Minskar Capacity automatiskt när element tas bort?
-        Console.WriteLine("Svar 4: TODO - skriv ditt svar här");
+        Console.WriteLine("Svar 4: Nej ");
     }
 
     static void PrintListInfo(List<string> list, string message)
